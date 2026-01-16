@@ -1,6 +1,6 @@
 // "use client"; use client 지시자 실행, 클라이언트 컴포넌트로 변경
 import './globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from 'next/link';
 import Control from './Control';
 // import Script from 'next/script';
