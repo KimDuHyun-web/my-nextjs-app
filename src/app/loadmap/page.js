@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 export default async function Loadmap() {
-  const res = await fetch(`http://localhost:9999/loadmap`, { next: { revalidate: 0 } });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/loadmap`, { next: { revalidate: 0 } });
   const loadmap = await res.json();
   return (
     <>

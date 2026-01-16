@@ -2,6 +2,7 @@
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from 'next/link';
+import Control from './Control';
 // import Script from 'next/script';
 // import { useState, useEffect } from 'react';
 
@@ -21,7 +22,7 @@ export default async function RootLayout({ children }) {
     .then(result=>setTopics(result));
   },[]); //최초 한 번 실행
   */
-  const res = await fetch(`http://localhost:9999/topics`, { next: { revalidate: 0 } });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/topics`, { next: { revalidate: 0 } });
   const topics = await res.json(); // json -> object 전환
 
   return (
@@ -53,15 +54,7 @@ export default async function RootLayout({ children }) {
         </nav>
         <main className="container">
           {children}
-          <ul className="nav gap-1">
-            <li>
-              <Link href="/create" className="btn btn-primary">Create</Link>
-            </li>
-            <li>
-              <Link href="/update/1" className="btn btn-secondary">Update</Link>
-            </li>
-            <li><button type="button" className="btn btn-danger">Delete</button></li>
-          </ul>
+          <Control/>
         </main>
         </body>
     </html>
